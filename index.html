@@ -141,7 +141,7 @@
     .card{background:rgba(17,17,17,.65);border:1px solid rgba(229,229,229,.25);border-radius:14px;padding:24px;backdrop-filter:blur(8px);transition:border-color .25s,transform .25s,box-shadow .25s}
     .card:hover{border-color:var(--silver-dark);transform:translateY(-4px);box-shadow:0 12px 36px rgba(212,212,212,.2),0 4px 12px rgba(229,229,229,.1)}
 
-    /* SUPPORTING BANNER */
+    /* SUPPORTS BANNER */
     .sup{position:relative;z-index:1;background:linear-gradient(135deg,rgba(229,229,229,.08),rgba(212,212,212,.05));border-top:1px solid rgba(229,229,229,.2);border-bottom:1px solid rgba(229,229,229,.2);padding:36px 48px}
     .sup-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:32px}
     .sup-l .stag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--silver-dark);margin-bottom:12px}
@@ -389,7 +389,7 @@
       .hact{flex-direction:column;gap:12px}
       .btn-g,.btn-o{width:100%;text-align:center;padding:16px 20px;font-size:16px;display:block}
 
-      /* Supporting */
+      /* Supports */
       .sup{padding:24px 20px}
       .sup-in{flex-direction:column;gap:16px}
       .sup-l h3{font-size:16px}
@@ -461,6 +461,40 @@
       .g2{grid-template-columns:1fr}
       .csh,.csbd{padding:28px}
     }
+
+    /* PROPERTY GALLERY */
+    #gallery{scroll-margin-top:80px;opacity:1!important;transform:none!important;animation:none!important}
+    #gallery .sw,#gallery h2,#gallery .si,#gallery .gallery-shell{opacity:1!important;transform:none!important;animation:none!important}
+    .gallery-shell{background:rgba(17,17,17,.65);border:1px solid rgba(229,229,229,.25);border-radius:20px;padding:32px;backdrop-filter:blur(8px)}
+    .gallery-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:24px}
+    .gallery-head p{max-width:520px;color:var(--slate-light);font-size:14px;line-height:1.7}
+    .gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+    .gallery-photo{position:relative;grid-column:span 4;min-height:240px;padding:0;border:1px solid rgba(229,229,229,.2);border-radius:12px;overflow:hidden;background:rgba(17,17,17,.6);cursor:zoom-in}
+    .gallery-photo.wide{grid-column:span 8}
+    .gallery-photo img{display:block;width:100%;height:100%;min-height:240px;object-fit:cover;transition:transform .4s ease,filter .4s ease;filter:brightness(.9)}
+    .gallery-photo:hover img{transform:scale(1.04);filter:brightness(1)}
+    .gallery-caption{position:absolute;left:12px;right:12px;bottom:12px;color:var(--white-prime);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-align:left;text-shadow:0 1px 8px #000}
+    .gallery-lightbox{position:fixed;inset:0;z-index:300;display:none;place-items:center;padding:32px;background:rgba(10,8,18,.94)}
+    .gallery-lightbox.open{display:grid}
+    .gallery-lightbox img{max-width:94vw;max-height:86vh;object-fit:contain}
+    .gallery-close{position:absolute;top:20px;right:24px;width:44px;height:44px;border:1px solid rgba(229,229,229,.5);border-radius:50%;background:rgba(17,17,17,.8);color:var(--white-prime);font-size:24px;cursor:pointer}
+    .gallery-close:hover{border-color:var(--silver-dark);color:var(--silver-dark)}
+    @media(max-width:768px){
+      .gallery-shell{padding:20px}
+      .gallery-head{display:block}
+      .gallery-head p{margin-top:10px}
+      .gallery-photo,.gallery-photo.wide{grid-column:span 12;min-height:220px}
+      .gallery-photo img{min-height:220px}
+    }
+
+    /* SEPARATE LANDING PAGES */
+    body > #currently,body > section:not(#experience):not(#setup):not(#contact){display:none!important}
+    .nav-socials{position:relative}
+    .nav-socials summary{cursor:pointer;list-style:none;color:var(--silver);font-size:13px;font-weight:500;white-space:nowrap}
+    .nav-socials summary::-webkit-details-marker{display:none}
+    .nav-social-menu{position:absolute;right:0;top:28px;min-width:150px;padding:8px;background:#191522;border:1px solid rgba(229,229,229,.25);border-radius:8px;box-shadow:0 16px 35px #0008}
+    .nav-social-menu a{display:block!important;padding:7px 10px!important;color:var(--silver)!important}
+    .nav-social-menu a:hover{color:var(--gold)!important}
   </style>
 </head>
 <body>
@@ -468,10 +502,11 @@
 
 <!-- MOBILE DRAWER -->
 <div class="mob-menu" id="mobMenu">
-  <a href="#currently" onclick="closeMenu()">Clients</a>
-  <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#casestudy" onclick="closeMenu()">Case Study</a>
-  <a href="#samples" onclick="closeMenu()">Portfolio</a>
+  <a href="clients.html" onclick="closeMenu()">Clients</a>
+  <a href="services.html" onclick="closeMenu()">Services</a>
+  <a href="case-study.html" onclick="closeMenu()">Case Study</a>
+  <a href="portfolio.html" onclick="closeMenu()">Portfolio</a>
+  <a href="gallery.html" onclick="closeMenu()">Gallery</a>
   <a href="#experience" onclick="closeMenu()">Experience</a>
   <a href="#setup" onclick="closeMenu()">Setup</a>
   <a href="#contact" class="mob-cta" onclick="closeMenu()">Hire Me</a>
@@ -486,15 +521,14 @@
 <nav>
   <div class="nav-logo">JP <span>Umahag</span></div>
   <ul class="nav-links">
-    <li><a href="#currently">Clients</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#casestudy">Case Study</a></li>
-    <li><a href="#samples">Portfolio</a></li>
+    <li><a href="clients.html">Clients</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="case-study.html">Case Study</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#setup">Setup</a></li>
-    <li><a href="https://www.linkedin.com/in/jpumahag/" target="_blank" rel="noopener" class="nav-li">
-      <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn
-    </a></li>
+    <li><details class="nav-socials"><summary>Socials</summary><div class="nav-social-menu"><a href="https://www.linkedin.com/in/jpumahag/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.facebook.com/jp.iux0023" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/jp.iux/" target="_blank" rel="noopener">Instagram</a><a href="https://www.onlinejobs.ph/jobseekers/info/2666370" target="_blank" rel="noopener">OnlineJobs.ph</a></div></details></li>
     <li><a href="#contact" class="nav-cta">Hire Me</a></li>
   </ul>
   <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -508,7 +542,7 @@
     <p class="hsub">6+ years in operations and real estate — I help businesses streamline workflows, automate the repetitive, and build systems that scale.</p>
     <div class="hact">
       <a href="#contact" class="btn-g">Let's Work Together</a>
-      <a href="#services" class="btn-o">See My Services</a>
+      <a href="services.html" class="btn-o">See My Services</a>
     </div>
   </div>
   <div class="hr">
@@ -535,13 +569,13 @@
 <!-- TICKER -->
 <div class="tkw"><div class="tkt" id="tkt"></div></div>
 
-<!-- CURRENTLY SUPPORTING -->
+<!-- CURRENTLY SUPPORTS -->
 <div class="sup" id="currently">
   <div class="sup-in">
     <div class="sup-l">
-      <div class="stag">Supporting</div>
+      <div class="stag">Supports</div>
       <h3>U.S. Residential Real Estate Operations</h3>
-      <p>Supporting a U.S.-based real estate professional with CRM management, transaction administration, marketing execution, social media, client engagement, documentation, and operational systems.</p>
+      <p>Supports a U.S.-based real estate professional with CRM management, transaction administration, marketing execution, social media, client engagement, documentation, and operational systems.</p>
     </div>
     <div class="sup-tags">
       <span class="stg">CRM Management</span><span class="stg">Transaction Support</span>
@@ -572,7 +606,7 @@
 <section id="reops"><div class="sw">
   <div class="sl-lbl">Specialization</div>
   <h2>Real Estate Operations<br>in Practice.</h2>
-  <p class="si">Supporting U.S. real estate professionals with the systems, marketing, transaction support, and day-to-day operations that keep their businesses moving.</p>
+  <p class="si">Supports U.S. real estate professionals with the systems, marketing, transaction support, and day-to-day operations that keep their businesses moving.</p>
   <div class="g2">
     <div class="roc fi"><div class="ri">🗂️</div><h3>CRM &amp; Lead Management</h3><ul><li>JTEK lead and contact management</li><li>Lead organization and tagging</li><li>Follow-up systems</li><li>CRM data maintenance</li><li>Database organization</li></ul></div>
     <div class="roc fi"><div class="ri">📋</div><h3>Transaction &amp; Administrative Support</h3><ul><li>ZipForm transaction support</li><li>DocuSign coordination</li><li>RentSpree</li><li>Lease preparation and organization</li><li>Transaction documentation</li><li>Deadline and detail tracking</li></ul></div>
@@ -591,7 +625,7 @@
     <div class="csh">
       <div class="csb-lbl">Case Study</div>
       <h3>Real Estate Operations &amp; Marketing Support</h3>
-      <p>Supporting a busy U.S. real estate professional across daily administration, CRM management, transaction support, marketing, social media, and operational projects.</p>
+    <p>Supports a busy U.S. real estate professional across daily administration, CRM management, transaction support, marketing, social media, and operational projects.</p>
       <div class="cs-meta">
         <div class="cs-mi">Client: <span>U.S. Real Estate Professional</span></div>
         <div class="cs-mi">Industry: <span>Residential Real Estate</span></div>
@@ -731,7 +765,7 @@
       <div class="smb">
         <div class="sm-cats"><span class="sm-cat">CRM</span><span class="sm-cat">Platform Mgmt</span></div>
         <h3>Zillow Premier Agent &amp; Review Management</h3>
-        <p>Managing a top-rated California Realtor's Zillow Premier Agent profile — supporting review requests, inbox management, contact tracking, and profile optimization.</p>
+        <p>Managing a top-rated California Realtor's Zillow Premier Agent profile — supports review requests, inbox management, contact tracking, and profile optimization.</p>
         <div class="sm-meta"><span class="sm-mi">⭐ <strong>5.0 Rating</strong></span><span class="sm-mi">📝 <strong>39 Reviews</strong></span><span class="sm-mi">🏡 <strong>108 Total Sales</strong></span></div>
       </div>
     </div>
@@ -858,7 +892,7 @@
       <ul class="wl">
         <li><span class="wck">✓</span>6+ years in operations and administration</li>
         <li><span class="wck">✓</span>4+ years in real estate sales and support</li>
-        <li><span class="wck">✓</span>Supporting a U.S. real estate professional</li>
+        <li><span class="wck">✓</span>Supports a U.S. real estate professional</li>
         <li><span class="wck">✓</span>AI automation and workflow optimization experience</li>
         <li><span class="wck">✓</span>Strong CRM and Salesforce background</li>
         <li><span class="wck">✓</span>Executive Assistant experience</li>
@@ -924,7 +958,7 @@
       </div>
       <div>
         <div class="er">Administrative Assistant → Estate Assistant Manager</div>
-        <p class="ed">Progressed from Administrative Assistant to Estate Assistant Manager supporting a 30-hectare destination estate in Pasig City. Coordinated a 10-person internal team and ~20 cross-functional stakeholders, engaging ~100 contacts monthly. Managed monthly billing for 5 third-party service providers and ~30 payment transactions monthly. Supervised a 58-person outsourced operations workforce after promotion. Resolved a 7-month third-party billing backlog within the first week in the Estate Assistant Manager role. Built and implemented an inquiry-management workflow using Zapier, Google Workspace, ClickUp, SAP, Salesforce, and QuickBooks, improving visibility across inquiry status, task ownership, and follow-up.</p>
+        <p class="ed">Progressed from Administrative Assistant to Estate Assistant Manager. Supports a 30-hectare destination estate in Pasig City. Coordinated a 10-person internal team and ~20 cross-functional stakeholders, engaging ~100 contacts monthly. Managed monthly billing for 5 third-party service providers and ~30 payment transactions monthly. Supervised a 58-person outsourced operations workforce after promotion. Resolved a 7-month third-party billing backlog within the first week in the Estate Assistant Manager role. Built and implemented an inquiry-management workflow using Zapier, Google Workspace, ClickUp, SAP, Salesforce, and QuickBooks, improving visibility across inquiry status, task ownership, and follow-up.</p>
         <div class="etg">
           <span class="et">Estate Operations</span><span class="et">58-Person Team Supervision</span>
           <span class="et">Vendor & Billing Management</span><span class="et">Event Coordination</span>
@@ -1019,6 +1053,19 @@
       <a href="https://www.onlinejobs.ph/jobseekers/info/2666370" target="_blank" rel="noopener" class="cl">💼 OnlineJobs.ph</a>
       <a href="#" onclick="downloadCV();return false;" class="cl">⬇️ Download CV</a>
     </div>
+  </div>
+</div></section>
+
+<!-- PROPERTY GALLERY -->
+<section id="gallery"><div class="sw">
+  <div class="sl-lbl">Selected client work</div>
+  <h2>Property stories, framed with intention.</h2>
+  <div class="gallery-shell fi">
+    <div class="gallery-head">
+      <p class="si" style="margin:0;max-width:620px">A curated collection of real-estate photography and visual editing focused on light, space, and the details that make a place feel like home.</p>
+      <p style="margin:0;color:var(--slate);font-size:12px">Click any image to view it larger.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
   </div>
 </div></section>
 
@@ -1135,6 +1182,60 @@
     });
   };
   observeAndStagger();
+
+  // Render the curated property collection
+  const galleryGrid=document.getElementById('galleryGrid');
+  const galleryPhotos=[
+    ['05','Front exterior · Property 1 · Daylight'],
+    ['06','Front exterior · Property 1 · Wide view'],
+    ['08','Front exterior · Property 1 · Dusk'],
+    ['09','Front exterior · Property 1 · Evening'],
+    ['11','Rear exterior · Property 1'],
+    ['12','Backyard · Property 1'],
+    ['10','Covered patio · Property 1'],
+    ['07','Side entrance and driveway'],
+    ['01','Living room'],
+    ['04','Dining room'],
+    ['03','Kitchen'],
+    ['15','Front exterior · Property 2 · Daylight'],
+    ['16','Front exterior · Property 2 · Wide view'],
+    ['40','Front exterior · Detached structure'],
+    ['43','Rear exterior · Property 2'],
+    ['42','Backyard · Property 2'],
+    ['18','Front porch · Property 2']
+  ];
+  galleryGrid.innerHTML=galleryPhotos.map(([number,label],index)=>{
+    const path=`photos/property-${number}.jpg`;
+    const wide=index%4===0?' wide':'';
+    return `<button class="gallery-photo${wide}" type="button" data-image="${path}" data-label="${label}"><img src="${path}" alt="${label}"><span class="gallery-caption">${label}</span></button>`;
+  }).join('');
+
+  // Property gallery lightbox
+  const galleryLightbox=document.createElement('div');
+  galleryLightbox.className='gallery-lightbox';
+  galleryLightbox.innerHTML='<button class="gallery-close" type="button" aria-label="Close image viewer">&times;</button><img alt="">';
+  document.body.appendChild(galleryLightbox);
+  const galleryPreview=galleryLightbox.querySelector('img');
+  const galleryClose=galleryLightbox.querySelector('.gallery-close');
+  document.querySelectorAll('.gallery-photo').forEach(photo=>{
+    photo.addEventListener('click',()=>{
+      galleryPreview.src=photo.dataset.image;
+      galleryPreview.alt=photo.dataset.label;
+      galleryLightbox.classList.add('open');
+      galleryClose.focus();
+    });
+  });
+  const closeGallery=()=>{
+    galleryLightbox.classList.remove('open');
+    galleryPreview.src='';
+  };
+  galleryClose.addEventListener('click',closeGallery);
+  galleryLightbox.addEventListener('click',e=>{
+    if(e.target===galleryLightbox) closeGallery();
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape') closeGallery();
+  });
 
   // Smooth GPU-accelerated transitions
   const interactiveEls=document.querySelectorAll('button, a, .btn-g, .btn-o, .card, .roc, .sc, .ac, .smc, .tfc, .sl, .cl');
