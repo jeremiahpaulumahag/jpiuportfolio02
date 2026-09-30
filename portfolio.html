@@ -61,8 +61,7 @@ footer{padding:40px 0 20px;border-top:1px solid var(--line);text-align:center;fo
 <div class="lightbox" id="lightbox"><span class="close" aria-label="Close">&times;</span><figure><img id="lightbox-image" src="" alt=""><figcaption id="lightbox-caption"></figcaption></figure></div>
 <script>
 const cards=document.querySelectorAll('.card'),buttons=document.querySelectorAll('.filter-btn');buttons.forEach(b=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;cards.forEach(c=>c.classList.toggle('hidden',f!=='all'&&c.dataset.category!==f))}));const lightbox=document.querySelector('#lightbox'),lbImage=document.querySelector('#lightbox-image'),lbCaption=document.querySelector('#lightbox-caption');cards.forEach(c=>c.addEventListener('click',()=>{const i=c.querySelector('img');lbImage.src=i.src;lbImage.alt=i.alt;lbCaption.textContent=c.dataset.caption;lightbox.classList.add('open')}));document.querySelector('.close').addEventListener('click',()=>lightbox.classList.remove('open'));lightbox.addEventListener('click',e=>{if(e.target===lightbox)lightbox.classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape')lightbox.classList.remove('open')});const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>observer.observe(x));
-<script src="chatbot.js" defer></script>
-
 </script>
+<script src="chatbot.js" defer></script>
 </body>
 </html>
